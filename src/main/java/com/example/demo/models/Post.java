@@ -1,6 +1,8 @@
 package com.example.demo.models;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Base64;
 
 @Entity
 public class Post {
@@ -15,9 +17,25 @@ public class Post {
     @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] image;
 
+    private LocalDateTime creationDate;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id") 
+    private User user;
+
     @Transient
     private String imageBase64;
+    
+    @PrePersist
+    protected void onCreate() {
+        this.creationDate = LocalDateTime.now();
+    }
 
+
+    public LocalDateTime getCreationDate() { return creationDate; }
+    public void setCreationDate(LocalDateTime creationDate) { this.creationDate = creationDate; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getText() { return text; }

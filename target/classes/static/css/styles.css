@@ -1,0 +1,25 @@
+body { font-family: sans-serif; margin: 0; background-color: #f0f2f5; }
+.main-container { max-width: 800px; margin: 80px auto 20px; padding: 20px; }
+.header { position: fixed; top: 0; width: 100%; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 1000; }
+.header-content { max-width: 840px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 60px; }
+.logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #1877f2; }
+.nav-links a, .logout-button { text-decoration: none; color: #333; margin-left: 20px; font-weight: 500; }
+.logout-button { background: none; border: none; cursor: pointer; font-family: sans-serif; font-size: 16px; padding: 0; }
+.post-form, .post-container, .profile-header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.post-form textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+.post-form input[type="file"] { margin: 10px 0; }
+.post-form button { background-color: #1877f2; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+.post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.post-author { font-weight: bold; text-decoration: none; color: #050505; }
+.post-author:hover { text-decoration: underline; }
+.post-date { color: #65676b; font-size: 14px; }
+.post-text { margin: 0 0 10px 0; white-space: pre-wrap; }
+.post-image { max-width: 100%; border-radius: 8px; }
+.delete-button { background-color: #e4e6eb; color: #333; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+.delete-button:hover { background-color: #d8dadf; }
+
+.profile-header { display: flex; align-items: center; }
+.profile-pic-large { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-right: 30px; border: 3px solid #ddd; }
+.default-pic { background-color: #ccc; }
+.profile-info h1 { margin: 0 0 10px 0; }
+.profile-info p { margin: 0; color: #65676b; }
