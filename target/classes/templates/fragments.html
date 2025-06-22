@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+    <div class="header" th:fragment="header">
+        <div class="header-content">
+            <a class="logo" th:href="@{/}">Social Network</a>
+            <div class="nav-links">
+                <a th:href="@{/profile/{login}(login=${#authentication.name})}">My Profile</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.login} + ' Profile'"></title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"> </head>
+<body>
+    <div th:replace="~{fragments :: header}"></div> <div class="main-container">
+        <div class="profile-header">
+            <img th:if="${profilePic}" th:src="@{'data:image/jpeg;base64,'+${profilePic}}" class="profile-pic-large">
+            <div th:unless="${profilePic}" class="profile-pic-large default-pic"></div>
+            <div class="profile-info">
+                <h1 th:text="${user.login}">User Login</h1>
+                <p th:text="${user.bio}">User bio goes here.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Posts by <span th:text="${user.login}"></span></h2>
+        <div class="feed">
+             <div th:if="${#lists.isEmpty(user.posts)}">
+                <p>This user has no posts yet.</p>
+            </div>
+            <div th:unless="${#lists.isEmpty(user.posts)}" th:each="post : ${user.posts}" class="post-container">
+                <div class="post-header">
+                    <span class="post-author" th:text="${post.user.login}">Author</span>
+                    <span class="post-date" th:text="${#temporals.format(post.creationDate, 'dd-MM-yyyy HH:mm')}">Date</span>
+                </div>
+                <p class="post-text" th:text="${post.text}">Post content</p>
+                <img th:if="${post.imageBase64 != null}" th:src="@{'data:image/jpeg;base64,'+${post.imageBase64}}" class="post-image"/>
+                <form th:if="${#authentication.name == post.user.login}" th:action="@{/post/delete/{id}(id=${post.id})}" method="post" style="margin-top: 10px;">
+                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
