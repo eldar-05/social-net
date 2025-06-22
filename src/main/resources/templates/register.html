@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Регистрация</title>
+</head>
+<body>
+    <h2>Регистрация</h2>
+    <form th:action="@{/register}" method="post">
+        <label>Имя пользователя: <input type="text" name="username" required></label><br>
+        <label>Пароль: <input type="password" name="password" required></label><br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    <p>Уже есть аккаунт? <a th:href="@{/login}">Войти</a></p>
+</body>
+</html>
